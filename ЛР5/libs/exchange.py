@@ -80,4 +80,8 @@ class Rate:
 
     def AZN(self):
         """Возвращает курс азербайджанского маната на сегодня в формате self.format"""
-        return self.make_format('AZN')
+        cur = 'AZN'
+        if (self.format == 'value') and (self.diff == True):
+            return self.make_format(cur) - self.make_format(cur,'Previous')
+        else:
+            return self.make_format(cur)
